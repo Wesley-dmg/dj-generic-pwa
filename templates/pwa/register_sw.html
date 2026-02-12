@@ -1,0 +1,30 @@
+{% load static %}
+
+<script src="{% static 'pwa/js/pwa.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('{% url "pwa:service_worker" %}')
+                .then(function(registration) {
+                    console.log('Service Worker enregistré avec succès:', registration.scope);
+                    
+                    // Vérifier les mises à jour
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                console.log('Nouveau contenu disponible');
+                                if (window.confirm('Une nouvelle version est disponible. Recharger la page ?')) {
+                                    window.location.reload();
+                                }
+                            }
+                        });
+                    });
+                })
+                .catch(function(error) {
+                    console.log('Échec d\'enregistrement du Service Worker:', error);
+                });
+        }
+    });
+</script>

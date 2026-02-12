@@ -1,0 +1,61 @@
+your_app/
+├── pwa/
+│   ├── __init__.py
+│   ├── apps.py
+│   ├── views.py
+│   ├── templatetags/
+│   │   ├── __init__.py
+│   │   └── pwa_tags.py
+│   └── templates/
+│       └── pwa/
+│           ├── manifest.json
+│           ├── sw.js
+│           ├── offline.html
+│           ├── meta.html
+│           └── register_sw.html
+└── static/
+    └── pwa/
+        ├── icons/
+        │   ├── icon-72x72.png
+        │   ├── icon-96x96.png
+        │   ├── icon-128x128.png
+        │   ├── icon-144x144.png
+        │   ├── icon-152x152.png
+        │   ├── icon-192x192.png
+        │   ├── icon-384x384.png
+        │   └── icon-512x512.png
+        └── js/
+            └── pwa.js
+
+
+
+
+
+
+
+
+            Cette solution est :
+
+    Modulaire : Vous pouvez l'installer dans n'importe quel projet Django
+
+    Configurable : Tout se configure via settings.py
+
+    Robuste : Gère le cache, les mises à jour, le mode hors ligne
+
+    Standard : Respecte les bonnes pratiques PWA
+
+    Facile à utiliser : Deux tags templates suffisent
+
+Pour l'utiliser dans un nouveau projet :
+
+    Copiez le dossier pwa dans votre application
+
+    Ajoutez 'pwa' à INSTALLED_APPS
+
+    Configurez les paramètres PWA dans settings.py
+
+    Ajoutez les tags templates dans votre base.html
+
+    Générez les icônes avec le script Python
+
+Et voilà ! Vous avez une PWA générique prête à l'emploi pour tous vos projets Django.

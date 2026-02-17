@@ -93,28 +93,15 @@ class PWAManager {
         }
     }
 
-    // Afficher une notification toast
+    // Dans votre classe PWA
     showToast(message) {
-        const toast = document.createElement('div');
-        toast.textContent = message;
-        toast.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 1000;
-            animation: fadeInOut 3s ease-in-out;
-        `;
-
-        document.body.appendChild(toast);
-
-        setTimeout(() => {
-            toast.remove();
-        }, 3000);
+        // Utiliser le ToastManager global s'il existe
+        if (window.ToastManager) {
+            ToastManager.info(message);
+        } else {
+            // Fallback si ToastManager n'est pas chargé
+            console.log('Toast:', message);
+        }
     }
 
     // Synchronisation en arrière-plan
